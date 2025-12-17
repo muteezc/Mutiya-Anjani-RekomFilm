@@ -3,6 +3,7 @@
     <title> Rekomendasi Film </title>
     <meta NAME="Generator" CONTENT="VS Code">
     <meta NAME="Author" CONTENT="Mutiya">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
     * {
         margin: 0;
@@ -244,6 +245,118 @@
       border-top: 1px solid #FFD700;
       color: #FFD700;
       font-size: 0.85em;
+    }
+
+    /* Mobile responsiveness */
+    @media screen and (max-width: 768px) {
+        .header {
+            padding: 50px 15px 30px;
+        }
+
+        .header h1 {
+            font-size: 1.8em;
+        }
+
+        .header p {
+            font-size: 1.1em;
+        }
+
+        .navbar {
+            padding: 10px 0;
+        }
+
+        .navbar ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar li {
+            margin: 5px 0;
+        }
+
+        .main-header {
+            padding: 15px;
+        }
+
+        .main-header h1 {
+            font-size: 1.5em;
+        }
+
+        .container {
+            width: 95%;
+            padding: 5px;
+        }
+
+        .film {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .film img {
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto 10px;
+        }
+
+        .film-info {
+            text-align: center;
+        }
+
+        .footer .container {
+            max-width: 95%;
+        }
+
+        .contact-form {
+            max-width: 90%;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .header {
+            padding: 40px 10px 20px;
+        }
+
+        .header h1 {
+            font-size: 1.5em;
+        }
+
+        .header p {
+            font-size: 1em;
+        }
+
+        .navbar li {
+            margin: 3px 0;
+        }
+
+        .navbar a {
+            padding: 6px 12px;
+            font-size: 0.9em;
+        }
+
+        .main-header h1 {
+            font-size: 1.3em;
+        }
+
+        .film {
+            padding: 10px;
+        }
+
+        .film img {
+            max-width: 180px;
+        }
+
+        .footer h3 {
+            font-size: 0.9em;
+        }
+
+        .footer p {
+            font-size: 0.75em;
+        }
+
+        .footer button {
+            font-size: 0.85em;
+        }
     }
   </style>
     <script>
