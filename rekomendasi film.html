@@ -1,0 +1,366 @@
+<html>
+<head>
+    <title> Rekomendasi Film </title>
+    <meta NAME="Generator" CONTENT="VS Code">
+    <meta NAME="Author" CONTENT="Mutiya">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000000;
+      color: #FFD700;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background: url('head1.png'), linear-gradient(135deg, #FF0000, #8B0000);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      text-align: center;
+      padding: 70px 20px 40px;
+      border-bottom: 5px solid #FFD700;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* background: rgba(255, 255, 255, 0.6); */
+      z-index: 0;
+    }
+    .header h1, .header p, .header .star {
+      position: relative;
+      z-index: 1;
+    }
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #FFD700;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+    .header p {
+      color: #FFFFFF;
+      font-size: 1.3em;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+    .navbar {
+      background: linear-gradient(to bottom, #8B0000, #000000);
+      padding: 12px 0;
+      text-align: center;
+      border-bottom: 2px solid #FFD700;
+    }
+    .navbar ul {
+      list-style-type: none;
+    }
+    .navbar li {
+      display: inline-block;
+      margin: 0 20px;
+    }
+    .navbar a {
+      text-decoration: none;
+      color: #FFD700;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    .navbar a:hover,
+    .navbar a.active {
+      color: #FFFFFF;
+      background: rgba(255, 0, 0, 0.5);
+      padding: 8px 15px;
+      border-radius: 20px;
+    }
+    .main-header {
+      background: linear-gradient(to bottom, #8B0000, #000000);
+      text-align: center;
+      padding: 20px;
+      border-bottom: 2px solid #FFD700;
+    }
+    .main-header h1 {
+      margin: 0;
+      font-size: 25px;
+      color: #FFD700;
+    }
+    .main-header p {
+      color: #FFFFFF;
+      margin-top: 5px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 10px;
+    }
+    .film {
+      background-color: #000000;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: transform 0.3s ease;
+      border: 1px solid #FF0000;
+      box-shadow: 0 2px 4px rgba(255, 0, 0, 0.1);
+    }
+    .film:hover {
+      transform: translateY(-5px);
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(255, 0, 0, 0.3);
+    }
+    .film img {
+      width: 120px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .film-info {
+      flex: 1;
+    }
+    .film-info h2 {
+      margin: 0;
+      color: #FFD700;
+    }
+    .film-info p {
+      margin: 5px 0;
+      color: #FFFFFF;
+    }
+    .film-link {
+      text-decoration: none;
+      display: block;
+      color: inherit;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: linear-gradient(to bottom, #8B0000, #000000);
+      color: #FFD700;
+      margin-top: 30px;
+      border-top: 1px solid #FFD700;
+    }
+    .header-decoration {
+      margin-top: 15px;
+    }
+    .footer {
+      background: url('foot2.png'), linear-gradient(135deg, #8B0000, #000000);
+      background-size: cover;
+      background-position: center;
+      padding: 5px 0 5px;
+      margin-top: 200px;
+      border-top: 4px solid #FFD700;
+      box-shadow: 0 -4px 8px rgba(255, 0, 0, 0.2);
+      color: #FFFFFF;
+      position: relative;
+      overflow: hidden;
+    }
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* background:
+          radial-gradient(circle at 15% 30%, rgba(255,255,255,0.15) 0%, transparent 25%),
+          radial-gradient(circle at 85% 70%, rgba(255,255,255,0.15) 0%, transparent 25%),
+          linear-gradient(135deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%);
+      background-size: 180px 180px, 120px 120px, 40px 40px; */
+      z-index: 0;
+    }
+    .footer .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .footer h3 {
+      color: #FFD700;
+      text-align: center;
+      margin-bottom: 2px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      font-size: 1.0em;
+    }
+    .footer p {
+      text-align: center;
+      color: #FFFFFF;
+      margin-bottom: 2px;
+      font-size: 0.8em;
+    }
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 5px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 6px;
+      border: 1px solid #b4a0f0;
+      border-radius: 5px;
+      background-color: #f0e6f6;
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.9em;
+      box-sizing: border-box;
+    }
+    .form-group textarea {
+      resize: vertical;
+    }
+    .footer button {
+      width: 100%;
+      padding: 8px;
+      background: linear-gradient(to bottom, #FF0000, #8B0000);
+      color: #FFD700;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      font-size: 0.9em;
+    }
+    .footer button:hover {
+      background: linear-gradient(to bottom, #FF4500, #FF0000);
+    }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 25px;
+      margin-top: 25px;
+      border-top: 1px solid #FFD700;
+      color: #FFD700;
+      font-size: 0.85em;
+    }
+  </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the current page name from the URL
+            const currentPage = window.location.pathname.split('/').pop();
+
+            // Identify the active navigation link
+            const navLinks = document.querySelectorAll('.navbar a');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage ||
+                    (currentPage === '' && link.getAttribute('href') === 'indeks.html')) {
+                    // Remove any existing page-specific classes
+                    document.querySelector('.header').className = 'header';
+
+                    // Add page-specific class based on the page
+                    if (currentPage.includes('rekomendasi')) {
+                        document.querySelector('.header').classList.add('rekomendasi');
+                    } else if (currentPage.includes('genre')) {
+                        document.querySelector('.header').classList.add('genre');
+                    } else if (currentPage.includes('kontak')) {
+                        document.querySelector('.header').classList.add('kontak');
+                    } else {
+                        // Default for beranda/index
+                        document.querySelector('.header').classList.add('beranda');
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+  <header class="header rekomendasi">
+    <div class="header-content">
+      <h1>🎬 RekomendasiQ</h1>
+      <p></p>
+    </div>
+  </header>
+  <nav class="navbar">
+    <ul>
+      <li><a href="indeks.html">Beranda</a></li>
+      <li><a href="rekomendasi film.html" class="active">Rekomendasi</a></li>
+      <li><a href="genre.html">Genre</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <a href="alive.html" class="film-link">
+    <div class="film">
+      <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQkQT9cSSis5q40Ezj58v1k2Lfn_llWmCe7djfVDiyyTPxHIttt" alt="Poster Film">
+      <div class="film-info">
+        <h2>Alive</h2>
+        <p><strong>Genre:</strong> Zombie, Horror, Drama</p>
+        <p><strong>Tahun:</strong> 2020</p>
+        <p><strong>Deskripsi:</strong> bercerita tentang Oh Joon Woo (Yoo Ah In) dan Kim Yoo Bin (Park Shin Hye) yang terjebak di kompleks apartemen di Seoul saat wabah misterius mengubah orang menjadi zombie. </p>
+      </div>
+    </div>
+    </a>
+
+    <a href="mencuri-raden-saleh.html" class="film-link">
+    <div class="film">
+      <img src="https://i.pinimg.com/1200x/f4/96/0c/f4960c1647ed1e2a79670d8f75a0c360.jpg" alt="Poster Film">
+      <div class="film-info">
+        <h2>Mencuri Raden Saleh</h2>
+        <p><strong>Genre:</strong> Laga, Film komedi, Melodrama, Petualangan, Cerita seru, Perampokan, Drama, Fiksi kriminal, Kejahatan</p>
+        <p><strong>Tahun:</strong> 2022</p>
+        <p><strong>Deskripsi:</strong> Pencurian terbesar abad ini tinggal menghitung hari menjelang tanggal eksekusinya. Komplotan sudah lengkap dan siap menjalankan misi untuk mencuri lukisan sang maestro, Raden Saleh, yang berjudul Penangkapan Diponegoro.</p>
+      </div>
+    </div>
+    </a>
+
+    <a href="the-conjuring.html" class="film-link">
+    <div class="film">
+      <img src="https://i.pinimg.com/736x/84/0e/00/840e002aae1d6548e39d2bdb5324c1e6.jpg" alt="Poster Film">
+      <div class="film-info">
+        <h2>The Conjuring</h2>
+        <p><strong>Genre:</strong> Horor</p>
+        <p><strong>Tahun:</strong> 2013</p>
+        <p><strong>Deskripsi:</strong> film horor supranatural Amerika Serikat tahun 2013 yang disutradarai oleh James Wan. Film ini merupakan film pertama dalam waralaba The Conjuring Universe. </p>
+      </div>
+    </div>
+    </a>
+
+    <a href="sister-death.html" class="film-link">
+    <div class="film">
+      <img src="https://i.pinimg.com/736x/20/11/d3/2011d320cce1243a6e7d4452121b002b.jpg" alt="Poster Film">
+      <div class="film-info">
+        <h2>Sister Death</h2>
+        <p><strong>Genre:</strong> Horor, Drama, Misteri</p>
+        <p><strong>Tahun:</strong> 2023</p>
+        <p><strong>Deskripsi:</strong> Sister Death adalah film horor supernatural Spanyol tahun 2023 yang disutradarai oleh Paco Plaza dan ditulis oleh Jorge Guerricaechevarría dan Plaza, serta dibintangi Aria Bedmar. </p>
+      </div>
+    </div>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <h3>Hubungi Kami</h3>
+      <p>Kirim pesan atau saran Anda:</p>
+      <form class="contact-form">
+        <div class="form-group">
+          <input type="text" placeholder="Nama Anda" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email Anda" required>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Pesan Anda" rows="4" required></textarea>
+        </div>
+        <button type="submit">Kirim Pesan</button>
+      </form>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 FilmQ. Mutiyaazch</p>
+    </div>
+  </footer>
+</body>
+</html>
